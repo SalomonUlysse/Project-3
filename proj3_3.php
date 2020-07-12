@@ -9,6 +9,9 @@
 	<script src="proj3_3.js"></script>
 </head>
 <body>
+	<audio id="bgm" autobuffer="" loop="true" preload="auto" src="sound\bgm\bgm.mp3">
+	 </audio>
+	 <script src="sound\audio.js"></script>
 	<div class="center hideForm">
 		<img id="oak" src="img/profOak.png">
 		<p id="goodbye">Thank you for playing! See you next time!</p>
@@ -45,7 +48,7 @@
 					<option value = "SpDef">Aspear Berry- Sp Def</option>
 					<option value = "Speed">Leppa Berry- Speed</option>
 				</select>
-				
+
 				<button type="submit" id="thanksOak" name="thanksOak">Thanks Oak.</button>
 			</p>
 		</form>
@@ -58,6 +61,6 @@
 	<button class="press" id="train">Train</button>
 	<button class="press" id="fight">Fight</button>
 	<button class="press" id="controls">Controls</button>
-	<button class="press" id="exit">Exit</button>	
+	<button class="press" id="exit" onclick="stopBGM()">Exit</button>
 </body>
 </html>

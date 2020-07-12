@@ -221,6 +221,84 @@ INSERT INTO `pokemon` (`DexNum`, `Name`, `Type1`, `Type2`, `Total_Stats`, `HP`, 
 (151, 'Mew', 'Psychic', '', 600, 100, 100, 100, 100, 100, 100, 1, 'FALSE');
 
 -- --------------------------------------------------------
+CREATE TABLE move (
+  `Name` VARCHAR(15) CHARACTER SET utf8,
+  `Type` VARCHAR(30) CHARACTER SET utf8,
+  `Category` VARCHAR(30) CHARACTER SET utf8,
+  `PP` INT(11),
+  `PP_Max` INT(11),
+  `Power` INT(11),
+  `Accuracy` NUMERIC(5, 2)
+) ENGINE = InnoDB;
+
+INSERT INTO move VALUES
+  ('Twineedle','Bug','Physical',20,32,25,1.00),
+  ('Pin Missile','Bug','Physical',20,32,25,0.95),
+  ('Leech Life','Bug','Physical',15,16,20,1.00),
+  ('Dragon Rage','Dragon','Special',10,16,40,1.00),
+  ('Thunder Punch','Electric','Physical',15,16,75,1.00),
+  ('Thunder Shock','Electric','Special',30,48,40,1.00),
+  ('Thunder Wave','Electric','Status',20,32,0,1.00),
+  ('Karate Chop','Fighting','Physical',25,40,50,1.00),
+  ('Jump Kick','Fighting','Physical',10,16,100,0.95),
+  ('Rolling Kick','Fighting','Physical',15,24,60,0.85),
+  ('Fire Punch','Fire','Physical',15,24,75,1.00),
+  ('Ember','Fire','Special',25,40,40,1.00),
+  ('Flamethrower','Fire','Special',15,24,90,1.00),
+  ('Wing Attack','Flying','Physical',35,56,60,1.00),
+  ('Fly','Flying','Physical',15,90,90,0.95),
+  ('Gust','Flying','Special',35,56,40,1.00),
+  ('Lick','Ghost','Physical',30,48,30,1.00),
+  ('Night Shade','Ghost','Special',15,24,0,1.00),
+  ('Razor Leaf','Grass','Physical',25,40,55,0.95),
+  ('Leech Seed','Grass','Status',10,16,0,0.90),
+  ('Absorb','Grass','Special',20,40,20,1.00),
+  ('Earthquake','Ground','Physical',10,16,100,1.00),
+  ('Dig','Ground','Physical',10,16,80,1.00),
+  ('Sand Attack','Ground','Status',15,24,0,1.00),
+  ('Ice Punch','Ice','Physical',15,24,75,1.00),
+  ('Ice Beam','Ice','Special',10,16,90,1.00),
+  ('Pound','Normal','Physical',35,56,40,1.00),
+  ('Comet Punch','Normal','Physical',15,24,18,0.85),
+  ('Mega Punch','Normal','Physical',20,32,80,0.85),
+  ('Pay Day','Normal','Physical',20,32,40,1.00),
+  ('Scratch','Normal','Physical',35,56,40,1.00),
+  ('Vice Grip','Normal','Physical',30,48,55,1.00),
+  ('Cut','Normal','Physical',30,48,50,0.95),
+  ('Slam','Normal','Physical',20,32,80,0.75),
+  ('Stomp','Normal','Physical',20,32,65,1.00),
+  ('Mega Kick','Normal','Physical',5,8,120,0.75),
+  ('Headbutt','Normal','Physical',15,24,70,1.00),
+  ('Horn Attack','Normal','Physical',25,40,65,1.00),
+  ('Tackle','Normal','Physical',35,56,40,1.00),
+  ('Body Slam','Normal','Physical',15,24,85,1.00),
+  ('Wrap','Normal','Physical',20,32,15,0.90),
+  ('Quick Attack','Normal','Physical',30,48,40,1.00),
+  ('Rage','Normal','Physical',20,32,20,1.00),
+  ('Explosion','Normal','Physical',5,8,250,1.00),
+  ('Fury Swipes','Normal','Physical',15,24,18,0.80),
+  ('Hyper Fang','Normal','Physical',15,24,80,0.90),
+  ('Super Fang','Normal','Physical',10,16,100,0.90),
+  ('Slash','Normal','Physical',20,32,70,1.00),
+  ('Razor Wind','Normal','Special',10,16,160,1.00),
+  ('Sonic Boom','Normal','Special',20,32,120,0.90),
+  ('Swords Dance','Normal','Status',20,32,0,100.00),
+  ('Acid','Poison','Special',30,48,40,1.00),
+  ('Poison Sting','Poison','Physical',35,56,15,1.00),
+  ('Psybeam','Psychic','Special',20,32,65,1.00),
+  ('Dream Eater','Psychic','Special',15,24,100,1.00),
+  ('Psywave','Psychic','Special',15,24,100,1.00),
+  ('Rock Throw','Rock','Physical',15,24,50,0.90),
+  ('Rock Slide','Rock','Physical',10,16,75,0.90),
+  ('Water Gun','Water','Special',25,40,40,1.00),
+  ('Hydro Pump','Water','Special',5,8,110,0.80),
+  ('Crabhammer','Water','Physical',10,16,100,0.90);
+
+--
+--
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `trainer`
