@@ -4,31 +4,6 @@
 //Variables for some for loop conditions.
 
 
-
-
-
-var typeChart = [
-/*The  column order matches the row order but in transpose. 1 is normal effectiveness (the default), 2 is super-effective, 0.5 is not very effective, and 0 
-    means completely ineffective. Attack is the row value (first array index) and defense is they column value (second array index). So if a fire-type 
-    attacks an ice type, the array value would be [1][5].
-/*Normal*/      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0, 1],
-/*Fire*/        [1, 0.5, 0.5, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0.5, 1, 0.5],
-/*Water*/       [1, 2, 0.5, 1, 0.5, 1, 1, 1, 2, 1, 1, 1, 2, 1, 0.5],
-/*Electric*/    [1, 1, 2, 0.5, 0.5, 1, 1, 1, 0, 2, 1, 1, 1, 1, 0.5],
-/*Grass*/       [1, 0.5, 2, 1, 0.5, 1, 1, 0.5, 2, 0.5, 1, 0.5, 2, 1, 1/2],
-/*Ice*/         [1, 1, 0.5, 1, 2, 0.5, 1, 1, 2, 2, 1, 1, 0.5, 1, 2],
-/*Fighting*/    [2, 1, 1, 1, 1, 2, 1, 0.5, 1, 0.5, 0.5, 0.5, 2, 0, 1],
-/*Poison*/      [1, 1, 1, 1, 2, 1, 1, 0.5, 0.5, 1, 1, 2, 0.5, 0.5, 1],
-/*Ground*/      [1, 2, 1, 2, 0.5, 1, 1, 2, 1, 0, 1, 0.5, 2, 1, 1],
-/*Flying*/      [1, 1, 1, 0.5, 2, 1, 2, 1, 1, 1, 1, 2, 0.5, 1, 1],
-/*Psychic*/     [1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 0.5, 1, 1, 1, 1],
-/*Bug*/         [1, 0.5, 1, 1, 2, 1, 0.5, 2, 1, 0.5, 2, 1, 1, 1, 1],
-/*Rock*/        [1, 2, 1, 1, 1, 2, 0.5, 1, 0.5, 2, 1, 2, 1, 1, 1],
-/*Ghost*/       [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 2, 1],
-/*Dragon*/      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-];
-
-
 /*
 --------------TO MY COLLABORATORS--------------
 I have the opponent moveset up for debugging.
@@ -55,7 +30,6 @@ var numPlayerItems=2;
 //Number of Pokemon on a team.
 var numPlayerPokemon=4;
 var numOpponentPokemon=4;
-var nve="nve"; //Not very effective.
 
 //How long to wait before displaying.
 var displaySpeed=3000;
@@ -1031,23 +1005,41 @@ function catchPokemon()
 
 }//End catchPokemon
 
-
-
-
 //Takes in a pokemon object and an attack
 function decreaseOpponentHealth()
 {   attack=10;
     var attackTotal=0;
     attackTotal+=player.pokemonTeam[playerCurrentPokemon].attack+51;
     var numOpponentPokemonFainted=0;
-    var effective=isEffective();
+    var effective = isEffective(player.pokemonTeam[playerCurrentPokemon].type1, opponent.pokemonTeam[opponentCurrentPokemon].type1) * isEffective(opponent.pokemonTeam[opponentCurrentPokemon].type2, player.pokemonTeam[playerCurrentPokemon].type2);
 
     var health=document.getElementById("opponenthpbar");
     //console.log("Opponent current Pokemon:" +opponentCurrentPokemon);
     health.value=opponent.pokemonTeam[opponentCurrentPokemon].hp;
+
+    var effectienessMessage = "It was a normal effectiness move.";
+    switch(effective){
+        case 0:
+        {
+            effectienessMessage = "It had no effect.";
+            break;
+        }
+        case 0.5:
+        {
+            effectienessMessage = "It wasn't very effective...";
+            break;
+        }
+        case 2:
+        {
+            effectienessMessage = "It was super effective!!";
+            break;
+        }       
+    }
+    display(effectienessMessage);
+    console.log(effectienessMessage);
     
     //This for loop is responsible for bringing the HP down by the attackTotal.
-    for(i=0;i<attackTotal;i++)
+    for(i=0;i<attackTotal*effective;i++)
     {
         health.value-=1;
         opponent.pokemonTeam[opponentCurrentPokemon].hp-=1;
@@ -1099,27 +1091,35 @@ function decreasePlayerHealth()
 {   
     var numPlayerPokemonFainted=0;//Keeps track of the player Pokemon fainted
     var attackTotal=0;
-    var effective=isEffective();
+    var effective = isEffective(opponent.pokemonTeam[opponentCurrentPokemon].type1, player.pokemonTeam[playerCurrentPokemon].type1) * isEffective(opponent.pokemonTeam[opponentCurrentPokemon].type2, player.pokemonTeam[playerCurrentPokemon].type2);
 
     attackTotal+=player.pokemonTeam[playerCurrentPokemon].attack+104;
     var health=document.getElementById("playerhpbar");
     health.value=player.pokemonTeam[playerCurrentPokemon].hp;
-    //If it's super effective, do more damage.
-    //If it is effective, add on.
-    
-    //If this returns super effective (se), then double the power.
-    // if(effective=="se")
-    // {
-    //     attackTotal*=2;
-    // }//End if
-    // else if(effective=="nve") //If this returns not very effective (nve), then half the power.
-    // {
-    //     attackTotal/=2;
-    // }//End else if
 
-    for(i=0;i<attackTotal;i++)
+    var effectienessMessage = "It was a normal effectiness move.";
+    switch(effective){
+        case 0:
+        {
+            effectienessMessage = "It had no effect.";
+            break;
+        }
+        case 0.5:
+        {
+            effectienessMessage = "It wasn't very effective...";
+            break;
+        }
+        case 2:
+        {
+            effectienessMessage = "It was super effective!!";
+            break;
+        }       
+    }
+    display(effectienessMessage);
+    console.log(effectienessMessage);
+
+    for(i=0;i<attackTotal*effective;i++)
     {
-        
         player.pokemonTeam[playerCurrentPokemon].hp-=1;
         health.value-=1;
     }//End for
@@ -1257,7 +1257,6 @@ catch(err)
     //Switch Pokemon
 }//End switchOpponentPokemon
 
-
 //Make a wait function and inside of it, disable the buttons first
 function opponentTurn()
 {
@@ -1322,80 +1321,131 @@ function opponentTurn()
 
 }//End wait
 
-//This 
-function isEffective(moveType,pokemonType)
-{
-    //Forming a 2d nxn array to do type advantages.
-    //Total amount of types in this generation.
-    //Since there are 15 types and I'm hard coding this advantage system, I'll just use 15.
-    
-    //Maybe just make it alphabetical?
-    
-    /*
-------------------LOOK AT MOVE TYPE AND IF IT IS A TYPE THAT HAS A STATUS AILMENT, DO CATCHPOKEMON RANDOM LOGIC TO INFLICT A STATUS ON IT!!!!!
-    */
-    var effectiveness="e";
-
-    //Attacker will be the array of arrays.
-    attacker=new Array();
-
-    receiver=new Array("bug", "dragon", "electric", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "water");
-    var typeId=new Array();
-    //IS THIS REALLY NEEDED???
-    for(i=0;i<receiver.length;i++)
-    {
-        //Now I know that id 0 is bug or id 4 is fire.
-        typeId[i]=receiver[i];
-    }//End for
-
-    //Initialize the receiver array.
-
-
-    //receiver=types;
-    //console.log("Here is the first type!! "+receiver[0]);
-    for(i=0;i<receiver.length;i++)
-    {
-        //Each element of attacker will be a receiver array.
-        for(j=0; j<receiver.length;j++)
+// Convert a type from a string to an int
+function convertTypeToNum(typeName){
+    var lowerTypeName = typeName.toLowerCase();
+    var typeNum = -1;
+    switch(lowerTypeName){
+        case "normal":
         {
-            //Each attacker is an array of types.
-            attacker[i]=receiver;
-        }//End inner for
-    }//End for
-    /*
-    0 <--attacker array element  0 1 2 3 4 ... <--receiver array elements
-    1 <--attacker array element  0 1 2 3 4
-    2 <--attacker array element  0 1 2 3 4
-    3 <--attacker array element  0 1 2 3 4
-    4 <--attacker array element  0 1 2 3 4
-    .
-    .
-    .
-    So if I want to access []
-    I may need to ID the types with the receiver elements to match properly with the attacker elements.
-    */
+            typeNum = 0;
+            break;
+        }
+        case "fire":
+        {
+            typeNum = 1;
+            break;
+        }
+        case "water":
+        {
+            typeNum = 2;
+            break
+        }
+        case "electric":
+        {
+            typeNum = 3;
+            break;
+        }
+        case "grass":
+        {
+            typeNum = 4;
+            break;
+        }
+        case "ice":
+        {
+            typeNum = 5;
+            break;
+        }
+        case "fighting":
+        {
+            typeNum = 6;
+            break
+        }
+        case "poison":
+        {
+            typeNum = 7;
+            break;
+        }
+        case "ground":
+        {
+            typeNum = 8;
+            break;
+        }
+        case "flying":
+        {
+            typeNum = 9;
+            break;
+        }
+        case "psychic":
+        {
+            typeNum = 10;
+            break
+        }
+        case "bug":
+        {
+            typeNum = 11;
+            break;
+        }
+        case "rock":
+        {
+            typeNum = 12;
+            break;
+        }
+        case "ghost":
+        {
+            typeNum = 13;
+            break;
+        }
+        case "dragon":
+        {
+            typeNum = 14;
+            break
+        }
+    }
+    return typeNum;
+}
 
+//This method takes in the attacking move type and the target pokemon's type and determines how effective the move is against the pokemon
+function isEffective(moveType,pokemonType){
     
-
-    // console.log("testing how 2d arrays in JS work: " +attacker[1][0]);
-    //
-    //"se"; This means super effective. x2 damage.              totalAttack*=2;
-    //"nve"; This means not very effective. x(1/2) damage.      totalAttack/=2;
-    //"e" This means effective. x1 damage.                      totalAttack*=1; (Leave alone.)
-
-    //Try 
-    //Just code up all the type advantages by using a 2D array.
-    
-    return nve;
+    var typeChart = [
+    /*The  column order matches the row order but in transpose. 1 is normal effectiveness (the default), 2 is super-effective, 0.5 is not very effective, and 0 
+        means completely ineffective. Attack is the row value (first array index) and defense is they column value (second array index). So if a fire-type 
+        attacks an ice type, the array value would be [1][5].
+    /*Normal*/      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0, 1],
+    /*Fire*/        [1, 0.5, 0.5, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0.5, 1, 0.5],
+    /*Water*/       [1, 2, 0.5, 1, 0.5, 1, 1, 1, 2, 1, 1, 1, 2, 1, 0.5],
+    /*Electric*/    [1, 1, 2, 0.5, 0.5, 1, 1, 1, 0, 2, 1, 1, 1, 1, 0.5],
+    /*Grass*/       [1, 0.5, 2, 1, 0.5, 1, 1, 0.5, 2, 0.5, 1, 0.5, 2, 1, 1/2],
+    /*Ice*/         [1, 1, 0.5, 1, 2, 0.5, 1, 1, 2, 2, 1, 1, 0.5, 1, 2],
+    /*Fighting*/    [2, 1, 1, 1, 1, 2, 1, 0.5, 1, 0.5, 0.5, 0.5, 2, 0, 1],
+    /*Poison*/      [1, 1, 1, 1, 2, 1, 1, 0.5, 0.5, 1, 1, 2, 0.5, 0.5, 1],
+    /*Ground*/      [1, 2, 1, 2, 0.5, 1, 1, 2, 1, 0, 1, 0.5, 2, 1, 1],
+    /*Flying*/      [1, 1, 1, 0.5, 2, 1, 2, 1, 1, 1, 1, 2, 0.5, 1, 1],
+    /*Psychic*/     [1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 0.5, 1, 1, 1, 1],
+    /*Bug*/         [1, 0.5, 1, 1, 2, 1, 0.5, 2, 1, 0.5, 2, 1, 1, 1, 1],
+    /*Rock*/        [1, 2, 1, 1, 1, 2, 0.5, 1, 0.5, 2, 1, 2, 1, 1, 1],
+    /*Ghost*/       [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 2, 1],
+    /*Dragon*/      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+    ];
+    if (moveType == "" || pokemonType == ""){
+        return 1;
+    }
+    // Turn the moveType into a number based on it's type
+    var moveTypeNum = convertTypeToNum(moveType);
+    // Turn the target pokemon's type into a number
+    var pokeTypeNum = convertTypeToNum(pokemonType);
+    if (moveTypeNum < 0 || pokeTypeNum < 0){
+        return 1;
+    }
+    // Combare attack (move) against defense (target pokemon) using the above chart and return result
+    return typeChart[moveTypeNum][pokeTypeNum];
 
 }//End checkIfEffective
 
 //This is where I update all the latest Pokemon data.
 function load()
 {
-    
-
-
     var move=new Array();
     var opMove=new Array();
     //The default ids are called these so it will always initialize properly.
@@ -1805,10 +1855,6 @@ function init()
 //This ends the battle and updates the trainer values 
 function end()
 {
-    
-
-
-
     //disableAllMoves();
     //Disabling all battle related buttons.
     opponentSwitchButton=document.getElementById("switchopponentpokemon");
