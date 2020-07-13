@@ -1,0 +1,181 @@
+.fire
+{   height: auto;
+    background-color: red;
+    border-radius: 8px;
+} 
+.bug
+{   background-color: greenyellow;
+    border-radius: 8px;
+}
+
+.dragon
+{   background-color: plum;
+    border-radius: 8px;
+} 
+
+.electric
+{   background-color:yellow;
+    border-radius: 8px;
+} 
+.fighting
+{   background-color:brown;
+    border-radius: 8px;
+} 
+
+.flying
+{   background-color: lightblue;
+    border-radius: 8px;
+} 
+.ghost
+{   background-color: darkslateblue;
+    border-radius: 8px;
+} 
+.grass
+{   background-color:greenyellow;
+    border-radius: 8px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+.ground
+{   background-color:burlywood;
+    border-radius: 8px;
+} 
+.ice
+{
+    background-color: skyblue;
+    border-radius: 8px;
+} 
+.normal
+{   background-color:gray;
+    border-radius: 8px;
+} 
+.poison
+{
+    background-color:purple;
+    border-radius: 8px;
+} 
+.psychic
+{
+    background-color: pink;
+    border-radius: 8px;
+} 
+.rock
+{   
+    background-color: lightsalmon;
+    border-radius: 8px;
+} 
+.water
+{   
+    background-color: blue;
+    border-radius: 8px;
+}
+
+.default
+{
+    border-radius: 8px;
+}
+
+#battlehud
+{   color:white;
+    border-radius: 8px;   
+    border-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#item
+{
+    background-color:blue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#opItem
+{
+    background-color: red;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+#switchplayerpokemon
+{
+    background-color:green;
+    height: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#switchopponentpokemon
+{
+    background-color:yellowgreen;
+    height: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+
+/*Opponent stuff is at top of page*/
+.opponent
+{   color: white;
+    border-width: auto;
+    bottom: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    position: fixed;
+    top: auto;
+}
+
+/*Player stuff is at bottom of page*/
+.player
+{   color: #ffffff;
+    position: fixed;
+    border-width: auto;
+    bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#display
+{
+    color: white;
+    position: fixed;
+    top: 180px;
+    font-size: large;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#playerpokemonname
+{
+    color:white;
+}
+
+#opponentpokemonname
+{
+    color:white;
+}
+
+#playerexp
+{
+    color:white;
+    height: 10px;
+}
+
+#wrap{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#player, #opp{
+  position: absolute;
+  margin: 0;
+  top: auto;
+  width:100%;
+  height:100%;
+  display: block;
+}
+
+#static{
+    position: static;
+}
+
+body{
+  background-size: cover;
+  background-repeat: no-repeat;
+}
