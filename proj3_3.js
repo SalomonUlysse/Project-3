@@ -264,6 +264,8 @@ $(document).ready(function()
 		$("#dupeTrainer").hide();
 		$("#dupeStarter").hide();
 		$("#encounter").hide();
+		$("#catchPokemon").hide();
+		$("#runAway").hide();
 		$(".center").show();
 		$("#oak").show();
 		$("#goodbye").show();
