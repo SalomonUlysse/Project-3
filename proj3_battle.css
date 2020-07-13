@@ -1,0 +1,162 @@
+.fire
+{   height: auto;
+    background-color: red;
+    border-radius: 8px;
+} 
+.bug
+{   background-color: greenyellow;
+    border-radius: 8px;
+}
+
+.dragon
+{   background-color: plum;
+    border-radius: 8px;
+} 
+
+.electric
+{   background-color:yellow;
+    border-radius: 8px;
+} 
+.fighting
+{   background-color:brown;
+    border-radius: 8px;
+} 
+
+.flying
+{   background-color: lightblue;
+    border-radius: 8px;
+} 
+.ghost
+{   background-color: darkslateblue;
+    border-radius: 8px;
+} 
+.grass
+{   background-color:greenyellow;
+    border-radius: 8px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+.ground
+{   background-color:burlywood;
+    border-radius: 8px;
+} 
+.ice
+{
+    background-color: skyblue;
+    border-radius: 8px;
+} 
+.normal
+{   background-color:gray;
+    border-radius: 8px;
+} 
+.poison
+{
+    background-color:purple;
+    border-radius: 8px;
+} 
+.psychic
+{
+    background-color: pink;
+    border-radius: 8px;
+} 
+.rock
+{   
+    background-color: lightsalmon;
+    border-radius: 8px;
+} 
+.water
+{   
+    background-color: blue;
+    border-radius: 8px;
+}
+
+.default
+{
+    background-color:black;
+    border-radius: 8px;
+}
+
+#battlehud
+{   color:white;
+    border-radius: 8px;   
+    border-color: white;
+}
+
+#item
+{
+    background-color:blue;
+}
+
+#opItem
+{
+    background-color: red;
+}
+
+
+#switchplayerpokemon
+{
+    background-color:green;
+    height: auto;
+}
+
+#switchopponentpokemon
+{
+    background-color:yellowgreen;
+    height: auto;
+}
+
+
+
+/*Opponent stuff is at top of page*/
+.opponent
+{   color: white;
+    position: relative;
+    border-width: auto;
+    bottom: auto;
+    border:solid;
+    border-radius: 8px;
+    border-color: white;
+    position: relative;
+    top: auto;
+}
+
+/*Player stuff is at bottom of page*/
+.player
+{   color: white;
+    position: relative;
+    border-width: auto;
+    bottom: auto;
+    border:solid;
+    border-radius: 8px;
+    border-color: white;
+    
+}
+
+#display
+{
+    color: white;
+    position: relative;
+    border-width: 100px;
+    border-bottom: 100px;
+    border-top: auto;
+    bottom: auto;
+    border:solid;
+    border-radius: 8px;
+    border-color: gray;
+}
+
+#playerpokemonname
+{
+    color:white;
+}
+
+#opponentpokemonname
+{
+    color:white;
+}
+
+#playerexp
+{
+    color:white;
+    height: 10px;
+}
+

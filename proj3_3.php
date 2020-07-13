@@ -19,11 +19,18 @@
 		<p id="dupeStarter">I believe you have already received a starter Pokemon from me. Good luck on your adventure!</p>
 		<p id="encounter">You have encountered a wild pokemon!</p>
 		<p id="trainPokemon">Welcome to Oak's Training Ground! What would you like to do?</p>
-		<p id="pokemonChoice">Choose your pokemon and berry for a 20% chance to raise stats!</p>
+		<p id="pokemonChoice">Choose your pokemon and berry for a 20% chance to raise stats! You may use your Control + Click to select multiple Pokemon!</p>
 		<p id="control">Everything in this game is controlled by mouse input, so anything you want to interact with use left click.</p>
+		<p id="choosePokemon">Please choose the Pokemon you wish to battle with! You may use your Control + Click to select multiple Pokemon!</p>
+
+		<p id="battleChoice"><?php include "listPokemon.php";?></p>
 
 		<button id="catchPokemon" name="catchPokemon">Catch</button>
 		<button id="runAway">Run</button>
+
+		<button id="toBattle" onclick="window.location.href = 'battle.html'">Battle!</button>
+
+		<button id="leave">Close</button>
 
 		<form id="form" method="post">
 			<p id="pokemonEncounter">

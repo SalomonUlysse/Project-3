@@ -32,7 +32,8 @@ include "pdo.php";
             }
         }
 
-        if ($caught == 1){
+        if ($caught == 1)
+        {
             //Transaction to ensure full sql completion
             $pdo->beginTransaction();
 
