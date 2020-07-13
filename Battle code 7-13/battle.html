@@ -1,0 +1,73 @@
+<html>
+    <link href="proj3_battle.css" rel="stylesheet" type="text/css">
+    <!--The idea here is to essentially make the battle GUI.-->
+    
+    <!--Make sure that whatever js reads in is already declared. -->
+    <head>
+        <canvas height="300" width="400"></canvas>
+    </head>
+<body bgcolor="black" onload="init()">
+    
+	<!--Look at GUI programming project code that makes the info change on the screen.-->
+    <div id ="battlehud">
+        
+        <div class="opponent">
+            <div id="opponenthp"> HP:0/0
+            <progress id="opponenthpbar" value="100" max="100"></progress>
+            <br>
+            </div>
+
+            <div id="opponentpokemonname"> </div>
+            <button id="opmove1" class="default" onclick="attackPlayer(this.id)">Empty attack<br>PP: 0/0</button>
+            <button id="opmove2" class="default" onclick="attackPlayer(this.id)">Empty attack<br>PP: 0/0</button>
+            <br>
+            <button id="opmove3" class="default" onclick="attackPlayer(this.id)">Empty attack<br>PP: 0/0</button>
+            <button id="opmove4" class="default" onclick="attackPlayer(this.id)">Empty attack<br>PP: 0/0</button>
+            
+            <button id="opItem" onclick="useOpponentItem()">Item</button>
+            <button id="switchopponentpokemon" onclick="switchOpponentPokemon()">Switch</button>
+            <br>
+        </div>
+        
+        <div id="display" onclick="nextMsg()">
+            What will you do?
+        </div>
+
+        <div class="player">
+            <!--Make sure that these values are PROPERLY initialized as the max and value here are dummy values.-->
+        
+        <div id="playerhp"> HP:0/0    
+            <progress id="playerhpbar" value="100" max ="100"></progress>
+            <br>
+        </div>
+
+        <div id="playerexp">
+            exp:0/0 
+            <!-- Lower number goes up to the max number and when the value reaches expMax (or next level) then the player will level up.-->
+            <progress id="playerexpbar" value="0" max ="100"></progress>         
+                
+        </div>
+        <br>
+        <div id="playerpokemonname"> </div>
+            <button id="move1" class="default" onclick="attackOpponent(this.id)">Empty attack<br>PP: 0/0</button>
+            <button id="move2" class="default" onclick="attackOpponent(this.id)">Empty attack<br>PP: 0/0</button>
+            <br>
+            <button id="move3" class="default" onclick="attackOpponent(this.id)">Empty attack<br>PP: 0/0</button>
+            <button id="move4" class="default" onclick="attackOpponent(this.id)">Empty attack<br>PP: 0/0</button>
+            
+            <select id="item" onchange="usePlayerItem(this)"><option>Items</option></select>
+            <select id="switchplayerpokemon" onchange="switchPlayerPokemon(this)"><option>Switch</option></select>
+            <br>
+        </div>
+
+    
+        <div id="updatedatabase">
+            <!--I use inner html to do the approrpiate php code that uses PDO to add to the database.-->
+        </div>
+
+    </div>
+    <script src="proj3_battle.js"></script>
+
+    
+</body>
+</html>
