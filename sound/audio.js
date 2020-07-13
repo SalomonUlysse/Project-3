@@ -22,6 +22,7 @@ function getCookie(c_name)
 }
 
 var song = document.getElementById("bgm");
+song.volume = 0.03;
 var played = false;
 var tillPlayed = getCookie('timePlayed');
 function update()
